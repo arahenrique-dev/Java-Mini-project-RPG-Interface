@@ -9,4 +9,5 @@ public abstract class Equipment {
 
     public int getPrice() {return price;} 
     public String getName() {return name;}
+
 }

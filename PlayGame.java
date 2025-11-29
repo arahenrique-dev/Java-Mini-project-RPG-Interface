@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class PlayGame {
     public static void main(String[] args) {
-        Board board = new Board(10, 10);
+        Board board = new Board();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("WELCOME TO THE PATH OF THE AUREAL SANCTUARY");

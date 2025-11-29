@@ -13,6 +13,8 @@ public abstract class Character extends Destructible {
     protected ArrayList<Weapon> weapons;
     protected ArrayList<Potion> potions;
 
+    
+
     public Character(String nom) {
         lifePoints = 100;
         this.name = nom;
@@ -63,7 +65,7 @@ public abstract class Character extends Destructible {
         }
     }
 
-    public void movePlayer(Board b, String l) {
+    public boolean movePlayer(Board b, String l) {
         int newX = x;
         int newY = y;
         Piece[][] map = b.getMap();
@@ -73,21 +75,22 @@ public abstract class Character extends Destructible {
             case "a" -> newY--;
             case "d" -> newY++;
             default -> {
-                return;
+            
             }
         }
         if (newX < 0 || newX >= b.getHeight() || newY < 0 || newY >= b.getWidth()) {
             System.out.println("You can't move outside the map!");
-            return;
+            return false;
         }
         if (map[newX][newY] != null) {
             System.out.println("You can't move past this!");
-            return;
+            return false;
         }
         map[x][y] = null;
         x = newX;
         y = newY;
         map[x][y] = this;
+        return true;
     }
 
     public void addWeapon(Weapon w) {weapons.add(w);}
@@ -96,8 +99,16 @@ public abstract class Character extends Destructible {
     public void addXP(int xp) {this.XP += xp;}
     public void addStrength(int s) {strength += s;}
     
+    public String getName() {return name;}
     public int getGold() {return gold;}
     public abstract void displayASCII();
+
+    public ArrayList<Weapon> getWeapons() {
+        return this.weapons;
+    }
+    public ArrayList<Potion> getPotions() {
+        return this.potions;
+    }
     
     
 }

@@ -2,9 +2,10 @@
 import java.util.ArrayList;
 
 public class Store extends Piece {
-    public ArrayList<Weapon> weapons;
-    public ArrayList<Potion> potions;
+    private ArrayList<Weapon> weapons;
+    private ArrayList<Potion> potions;
 
+   
     public Store() {
         representingLetter = "S";
         weapons = new ArrayList<>();
@@ -16,10 +17,12 @@ public class Store extends Piece {
         weapons.add(new Sword("Shadow Piercing Sword", ((int)(Math.random()*20)), ((int)(Math.random()*30))));
 
         String[] potionNames = {"Shining Elixir", "Life Tonic", "Moonlight Nectar", "Shadow Veil Essence"};
+        int i = 0;
         for (String potionName : potionNames) {
             int randomExtraLifePointsValue = (int)(Math.random()*40);
             int randomPrice = (int)(Math.random()*10);
-            potions.add(new Potion(potionName, randomPrice, randomExtraLifePointsValue));
+            potions.add(new Potion(potionName, randomPrice, randomExtraLifePointsValue, i));
+            i++;
         }
     }
     public void displayEquipment() {
@@ -59,5 +62,11 @@ public class Store extends Piece {
                 else System.out.println("Too expensive. Not enough gold to buy " + product.getName());
         }
         player.addXP(10);
+    }
+    public ArrayList<Weapon> getWeapons() {
+        return this.weapons;
+    }
+    public ArrayList<Potion> getPotions() {
+        return this.potions;
     }
 }

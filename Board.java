@@ -6,9 +6,9 @@ public final class Board {
     private final double OBSTACLE_SPAWN_RATE = 0.1;
     private final double STORE_SPAWN_RATE = 0.15;
     
-    public Board(int w, int h) {
-        this.w = w;
-        this.h = h;
+    public Board() {
+        this.w = 10;
+        this.h = 10;
         map = new Piece[w][h];
     }
 
